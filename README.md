@@ -6,7 +6,9 @@ This project turns your raspberry pi (or any other Debian based computer) into a
 
 #Step 1
 Warning: this will override a previous installation of usbmount
+
 Clone the project to your home directory
+
 //insert code to download code to home 
 
 run the setup.sh script and follow the instructions
