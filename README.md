@@ -10,10 +10,15 @@ Clone the project to your home directory
 //insert code to download code to home 
 
 run the setup.sh script and follow the instructions
-```cd ~ ```
-``` sudo ./setup.sh ```
+```
+cd ~
+sudo ./setup.sh 
+```
 
-
-Downl
+After the script has finsihed, your system is already responding to your thumb drive key
+However, the script only prints out "file found" or "file not found"
+In order to do more you must edit the Check_For_Key.sh file located in ~/USB-Lock-Key directory
+I have provide an example to turn an LED on or off in the scripts comments, but you can add script
+you want there to have your thumb drive key do whatever you need. 
 
 
