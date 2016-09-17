@@ -25,8 +25,12 @@ DEVICE_UUID = "$(grep -v -f devicesBefore.info devicesAfter.info)"
 sudo cp usbmount /usr/share/usbmount
 
 
-##Possibly add Check_For_Key.sh to /usr/bin directory
+##Possibly Add Check_For_Key.sh to /usr/bin directory
+##sudo cp check_for_key.sh /usr/local/bin/check_for_key.sh
+
 ##Add Check_For_Key.sh to autorun on boot
+sudo cp check_for_key.sh /etc/init.d/check_for_key.sh
+sudo update-rc.d check_for_key.sh defaults
 
 
 echo "You must reboot for the changes to take effect."
