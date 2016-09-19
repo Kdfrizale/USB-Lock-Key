@@ -1,9 +1,21 @@
 #!/bin/sh
+
+#check for prevous installation
+if[ -f /usr/share/usbmount]
+then 
+    read -p "This will override your previous installation of usbmount. Do you wish to continue?" yn
+        case $yn in
+            [Yy]* ) break;;
+            [Nn]* ) exit;;
+            * ) echo "Please answer yes or no.";;
+        esac
+        
 echo "Updating..."
 sudo apt-get update
 
 echo "Installing dependencies..."
 sudo apt-get install usbmount
+sudo mkdir /mnt/usbkey
 
 sudo blkid -s UUID -o value > devicesBefore.info
 read -p "Insert the thumb drive to become a key now. Press Enter to continue.."
