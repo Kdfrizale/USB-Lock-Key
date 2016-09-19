@@ -140,7 +140,7 @@ if [ "$1" = add ]; then
 		#mount "-t$fstype" "${options:+-o$options}" "$DEVNAME" "$mountpoint"
 		
 		##Copy your thumb drive's uuid below after the THUMBDRIVEUUID = 
-		THUMBDRIVEUUID =
+		THUMBDRIVEUUID=
 		mount --uuid "$THUMBDRIVEUUID" "$mountpoint"
 		
 		# Determine vendor and model.
