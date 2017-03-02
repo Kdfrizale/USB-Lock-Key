@@ -1,15 +1,21 @@
 #!/bin/sh
+read -p "Make sure the thumb drive is not currently plugged in... Do you wish to continue?" yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
 
 #check for prevous installation
 if[ -f /usr/share/usbmount]
-then 
+then
     read -p "This will override your previous installation of usbmount. Do you wish to continue?" yn
         case $yn in
             [Yy]* ) break;;
             [Nn]* ) exit;;
             * ) echo "Please answer yes or no.";;
         esac
-        
+
 echo "Updating..."
 sudo apt-get update
 
@@ -38,7 +44,3 @@ read -p "Do you wish to reboot now?" yn
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
-
-
-
-
