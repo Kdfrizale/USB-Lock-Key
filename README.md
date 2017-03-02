@@ -9,11 +9,14 @@ Warning: this will override a previous installation of usbmount
 
 Clone the project to your home directory
 
-//insert code to download code to home 
+```
+cd ~
+git clone https://github.com/Kdfrizale/USB-Lock-Key.git
+```
 
 run the setup.sh script and follow the instructions
 ```
-cd ~
+cd ~/USB-Lock-Key
 sudo ./setup.sh 
 ```
 
