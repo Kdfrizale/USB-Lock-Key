@@ -1,5 +1,5 @@
 #!/bin/sh
-read -p "Make sure the thumb drive is not currently plugged in... Do you wish to continue?" yn
+read -p "Make sure the thumb drive is NOT currently plugged in... Do you wish to continue?" yn
     case $yn in
         [Yy]* ) break;;
         [Nn]* ) exit;;
