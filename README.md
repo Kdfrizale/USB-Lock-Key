@@ -1,5 +1,5 @@
 # USB-Lock-Key
-This project turns your raspberry pi (or any other Debian based computer) into a lock for a USB thumb drive.  Only the unique thumb drive will be accepted.  The script is easily edited to change the function to anything instead of opening a lock.  
+This project turns your raspberry pi (tested using Raspbian-Jessie-Lite) into a lock for a USB thumb drive.  Only the unique thumb drive will be accepted.  The script is easily edited to change the function to anything instead of opening a lock.  
 
 #THIS IS CURRENTLY IN DEVELOPMENT, INSTRUCTIONS WILL NOT MAKE SENSE UNTIL THE PROJECT IS FINISHED
 #HOWEVER ALL CODE IS FINISHED, IF YOU WOULD LIKE TO TRY TO INSTALL WITHOUT THE EVENTUAL AUTOMATIC INSTALLATION
@@ -26,4 +26,8 @@ In order to do more you must edit the Check_For_Key.sh file located in ~/USB-Loc
 I have provide an example to turn an LED on or off in the scripts comments, but you can add any script
 you want there to have your thumb drive key do whatever you need. 
 
+#Overview/Program's Logic
+*setup usbmount to automatically mount only the specified thumbdrive
+*check_for_key.sh runs in the background checking for the thumbdrive
+*when a certain file is found on the thumbdrive, execute any specified code located in check_for_key.sh
 
