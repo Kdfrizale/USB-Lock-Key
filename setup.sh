@@ -34,6 +34,7 @@ sed -i "s/THUMBDRIVEUUID=/THUMBDRIVEUUID=$DEVICE_UUID/g" usbmount
 sudo cp usbmount /usr/share/usbmount
 
 ##Add Check_For_Key.sh to autorun on boot
+sudo chmod +x check_for_key.sh
 sudo cp check_for_key.sh /etc/init.d/check_for_key.sh
 sudo update-rc.d check_for_key.sh defaults
 
