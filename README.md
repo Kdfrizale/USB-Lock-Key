@@ -27,7 +27,7 @@ I have provide an example to turn an LED on or off in the scripts comments, but 
 you want there to have your thumb drive key do whatever you need. 
 
 #Overview/Program's Logic
-*setup usbmount to automatically mount only the specified thumbdrive
-*check_for_key.sh runs in the background checking for the thumbdrive
-*when a certain file is found on the thumbdrive, execute any specified code located in check_for_key.sh
+* setup usbmount to automatically mount only the specified thumbdrive
+* check_for_key.sh runs in the background checking for the thumbdrive
+* when a certain file is found on the thumbdrive, execute any specified code located in check_for_key.sh
 
