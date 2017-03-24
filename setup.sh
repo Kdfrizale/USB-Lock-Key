@@ -36,6 +36,7 @@ sudo cp usbmount /usr/share/usbmount
 ##Add Check_For_Key.sh to autorun on boot
 sudo chmod +x check_for_key.sh
 sudo cp check_for_key.sh /etc/init.d/check_for_key.sh
+sudo chmod +x /etc/init.d/check_for_key.sh
 sudo update-rc.d check_for_key.sh defaults
 
 echo "You must reboot for the changes to take effect."
