@@ -138,11 +138,11 @@ if [ "$1" = add ]; then
 		#original code in comment below
 		#log info "executing command: mount -t$fstype ${options:+-o$options} $DEVNAME $mountpoint"
 		#mount "-t$fstype" "${options:+-o$options}" "$DEVNAME" "$mountpoint"
-		
-		##Copy your thumb drive's uuid below after the THUMBDRIVEUUID = 
+
+		##Copy your thumb drive's uuid below after the THUMBDRIVEUUID =
 		THUMBDRIVEUUID=
-		mount --uuid "$THUMBDRIVEUUID" "$mountpoint"
-		
+		mount --uuid "$THUMBDRIVEUUID" "/mnt/usbkey"
+
 		# Determine vendor and model.
 		vendor=
 		if [ -r "/sys$DEVPATH/device/vendor" ]; then
