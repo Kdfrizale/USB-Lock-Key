@@ -1,4 +1,17 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides:          check_for_key
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: checks for USB KEY in lock
+# Description:       This file is part of the package USB-Lock-Key,
+#		     its purpose is to check for when the key is inserted
+### END INIT INFO
+
+# Author: Kyle Frizzell <kdfrizale on GitHub>
+
 
 ##Variable file is the location of the mount point of the thumb drive with the key-file on it
 ##the contents DO NOT matter, but the name of the file must be exact
