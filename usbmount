@@ -98,75 +98,76 @@ if [ "$1" = add ]; then
     fi
 
     # Try to use specifications in /etc/fstab first.
-    if egrep -q "^[[:blank:]]*$DEVNAME" /etc/fstab; then
-	log info "executing command: mount $DEVNAME"
-	mount $DEVNAME || log err "mount by DEVNAME with $DEVNAME wasn't successful; return code $?"
+    # if egrep -q "^[[:blank:]]*$DEVNAME" /etc/fstab; then
+	# log info "executing command: mount $DEVNAME"
+	# mount $DEVNAME || log err "mount by DEVNAME with $DEVNAME wasn't successful; return code $?"
 
-    elif grep -q "^[[:blank:]]*UUID=$UUID" /etc/fstab; then
-        log info "executing command: mount -U $UUID"
-	mount -U $UUID || log err "mount by UUID with $UUID wasn't successful; return code $?"
+    # elif grep -q "^[[:blank:]]*UUID=$UUID" /etc/fstab; then
+        # log info "executing command: mount -U $UUID"
+	# mount -U $UUID || log err "mount by UUID with $UUID wasn't successful; return code $?"
 
-    else
-	log debug "$DEVNAME contains filesystem type $FSTYPE"
-
-	fstype=$FSTYPE
+    # else
+	# log debug "$DEVNAME contains filesystem type $FSTYPE"
+   
 	# Test if the filesystem type is in the list of filesystem
 	# types to mount.
-	if in_list "$fstype" "$FILESYSTEMS"; then
-	    # Search an available mountpoint.
-	    for v in $MOUNTPOINTS; do
-		if [ -d "$v" ] && ! grep -q "^[^ ][^ ]*  *$v " /proc/mounts; then
-		    mountpoint="$v"
-		    log debug "mountpoint $mountpoint is available for $DEVNAME"
-		    break
-		fi
-	    done
-	    if [ -n "$mountpoint" ]; then
-		# Determine mount options.
-		options=
-		for v in $FS_MOUNTOPTIONS; do
-		    if expr "$v" : "-fstype=$fstype,."; then
-			options="$(echo "$v" | sed 's/^[^,]*,//')"
-			break
-		    fi
-		done
-		if [ -n "$MOUNTOPTIONS" ]; then
-		    options="$MOUNTOPTIONS${options:+,$options}"
-		fi
+	# if in_list "$fstype" "$FILESYSTEMS"; then
+	    # # Search an available mountpoint.
+	    # for v in $MOUNTPOINTS; do
+		# if [ -d "$v" ] && ! grep -q "^[^ ][^ ]*  *$v " /proc/mounts; then
+		    # mountpoint="$v"
+		    # log debug "mountpoint $mountpoint is available for $DEVNAME"
+		    # break
+		# fi
+	    # done
+	    # if [ -n "$mountpoint" ]; then
+		# # Determine mount options.
+		# options=
+		# for v in $FS_MOUNTOPTIONS; do
+		    # if expr "$v" : "-fstype=$fstype,."; then
+			# options="$(echo "$v" | sed 's/^[^,]*,//')"
+			# break
+		    # fi
+		# done
+		# if [ -n "$MOUNTOPTIONS" ]; then
+		    # options="$MOUNTOPTIONS${options:+,$options}"
+		# fi
 
 		# Mount the filesystem.
 		#original code in comment below
 		#log info "executing command: mount -t$fstype ${options:+-o$options} $DEVNAME $mountpoint"
 		#mount "-t$fstype" "${options:+-o$options}" "$DEVNAME" "$mountpoint"
-
+	if true, then
+		fstype=$FSTYPE
 		##Copy your thumb drive's uuid below after the THUMBDRIVEUUID =
+		mountpoint="/mnt/usbkey"
 		THUMBDRIVEUUID=
-		mount --uuid "$THUMBDRIVEUUID" "/mnt/usbkey"
+		mount --uuid "$THUMBDRIVEUUID" "$mountpoint"
 
-		# Determine vendor and model.
-		vendor=
-		if [ -r "/sys$DEVPATH/device/vendor" ]; then
-		    vendor="`cat \"/sys$DEVPATH/device/vendor\"`"
-		elif [ -r "/sys$DEVPATH/../device/vendor" ]; then
-		    vendor="`cat \"/sys$DEVPATH/../device/vendor\"`"
-		elif [ -r "/sys$DEVPATH/device/../manufacturer" ]; then
-		    vendor="`cat \"/sys$DEVPATH/device/../manufacturer\"`"
-		elif [ -r "/sys$DEVPATH/../device/../manufacturer" ]; then
-		    vendor="`cat \"/sys$DEVPATH/../device/../manufacturer\"`"
-		fi
-		vendor="$(echo "$vendor" | sed 's/^[[:blank:]]\+//; s/[[:blank:]]\+$//')"
+		# # Determine vendor and model.
+		# vendor=
+		# if [ -r "/sys$DEVPATH/device/vendor" ]; then
+		    # vendor="`cat \"/sys$DEVPATH/device/vendor\"`"
+		# elif [ -r "/sys$DEVPATH/../device/vendor" ]; then
+		    # vendor="`cat \"/sys$DEVPATH/../device/vendor\"`"
+		# elif [ -r "/sys$DEVPATH/device/../manufacturer" ]; then
+		    # vendor="`cat \"/sys$DEVPATH/device/../manufacturer\"`"
+		# elif [ -r "/sys$DEVPATH/../device/../manufacturer" ]; then
+		    # vendor="`cat \"/sys$DEVPATH/../device/../manufacturer\"`"
+		# fi
+		# vendor="$(echo "$vendor" | sed 's/^[[:blank:]]\+//; s/[[:blank:]]\+$//')"
 
-		model=
-		if [ -r "/sys$DEVPATH/device/model" ]; then
-		    model="`cat \"/sys$DEVPATH/device/model\"`"
-		elif [ -r "/sys$DEVPATH/../device/model" ]; then
-		    model="`cat \"/sys$DEVPATH/../device/model\"`"
-		elif [ -r "/sys$DEVPATH/device/../product" ]; then
-		    model="`cat \"/sys$DEVPATH/device/../product\"`"
-		elif [ -r "/sys$DEVPATH/../device/../product" ]; then
-		    model="`cat \"/sys$DEVPATH/../device/../product\"`"
-		fi
-		model="$(echo "$model" | sed 's/^[[:blank:]]\+//; s/[[:blank:]]\+$//')"
+		# model=
+		# if [ -r "/sys$DEVPATH/device/model" ]; then
+		    # model="`cat \"/sys$DEVPATH/device/model\"`"
+		# elif [ -r "/sys$DEVPATH/../device/model" ]; then
+		    # model="`cat \"/sys$DEVPATH/../device/model\"`"
+		# elif [ -r "/sys$DEVPATH/device/../product" ]; then
+		    # model="`cat \"/sys$DEVPATH/device/../product\"`"
+		# elif [ -r "/sys$DEVPATH/../device/../product" ]; then
+		    # model="`cat \"/sys$DEVPATH/../device/../product\"`"
+		# fi
+		# model="$(echo "$model" | sed 's/^[[:blank:]]\+//; s/[[:blank:]]\+$//')"
 
 		# Run hook scripts; ignore errors.
 		export UM_DEVICE="$DEVNAME"
@@ -181,8 +182,8 @@ if [ "$1" = add ]; then
 		# No suitable mount point found.
 		log warning "no mountpoint found for $DEVNAME"
 		exit 1
-	    fi
-	fi
+	    
+	
     fi
 elif [ "$1" = remove ]; then
 
